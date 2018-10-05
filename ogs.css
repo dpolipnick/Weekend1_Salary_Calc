@@ -116,3 +116,7 @@ body {
   .align-input {
     margin-left: 115px;
   }
+
+  .red{
+    background-color: red;
+  }
