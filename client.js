@@ -38,7 +38,7 @@ function updateChart() {
     console.log('Inside updateDom function');
     $('#chart').empty();
     for (let employee of employeeArray) {
-        $('#chart').append('<li>'+ 'First Name: ' + employee.fName+ ' Last Name: ' + employee.lName+ ' ID#' + employee.idNumber+ ' Job Title: ' + employee.jobTitle+ ' Annual Salary $' + employee.annualSalary + '</li>');
+        $('#chart').append('<li>'+ 'First Name: ' + employee.fName+ ' Last Name: ' + employee.lName+ ' ID#' + employee.idNumber+ ' Job Title: ' + employee.jobTitle+ ' Annual Salary $' + employee.annualSalary + '<button class="delete">Delete</button></li>');
     }//end for of loop
 }//end updateDom function
 
