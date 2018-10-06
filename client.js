@@ -16,6 +16,7 @@ let employeeArray= [];
 function readyNow() {
     console.log('jQuery is working.');
     $('#addButton').on('click', getInfo);
+    $('#chart').on('click', '.deleteEmployee', deleteEmployee);
 }//end readyNow fuction
 
 function getInfo() {
@@ -38,7 +39,7 @@ function updateChart() {
     console.log('Inside updateDom function');
     $('#chart').empty();
     for (let employee of employeeArray) {
-        $('#chart').append('<li>'+ 'First Name: ' + employee.fName+ ' Last Name: ' + employee.lName+ ' ID#' + employee.idNumber+ ' Job Title: ' + employee.jobTitle+ ' Annual Salary $' + employee.annualSalary + '<button class="delete">Delete</button></li>');
+        $('#chart').append('<li>'+ 'First Name: ' + employee.fName+ ' Last Name: ' + employee.lName+ ' ID#' + employee.idNumber+ ' Job Title: ' + employee.jobTitle+ ' Annual Salary $' + employee.annualSalary + '<button class="deleteEmployee">Delete</button></li>');
     }//end for of loop
 }//end updateDom function
 
@@ -63,5 +64,20 @@ function updatePayroll() {
     if (payroll>20000) {
         $('#payroll').empty();
         $('#payroll').append(`<h3 class="red">$` + payroll + `</h3>`);
-    }
-}
+    }//end if statement
+}//end updatePayroll function
+
+function deleteEmployee() {
+    console.log('delete!');
+    let selectedItem = $(this).parent().text();
+    console.log(selectedItem);
+    for(let i = 0; i < employeeArray.length; i++) {
+        if(selectedItem.includes(employeeArray[i].fName)){
+            console.log('delete me!');
+            employeeArray.splice(i, 1);
+            $(this).parent().remove();
+            updatePayroll();
+            return true;
+        }// end if statement
+    }//end for statement
+}//end delete function
